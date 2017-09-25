@@ -1,1 +1,3 @@
-public/lib/
+app/static/lib
+__pycache__/
+*.pyc

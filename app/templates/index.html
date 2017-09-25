@@ -1,7 +1,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./lib/flipclock/compiled/flipclock.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='lib/flipclock/compiled/flipclock.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
   </head>
   <body>
@@ -26,8 +26,8 @@
       <button class="reset-button button is-dark">Reset</button>
     </div>
 
-  <script src="./lib/jquery/dist/jquery.min.js"></script>
-  <script src="./lib/flipclock/compiled/flipclock.min.js"></script>
-  <script src="./index.js"></script>
+  <script src="{{url_for('static', filename='lib/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='lib/flipclock/compiled/flipclock.min.js')}}"></script>
+  <script src="{{url_for('static', filename='index.js')}}"></script>
   </body>
 </html>
