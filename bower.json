@@ -1,0 +1,14 @@
+{
+  "name": "pomodoro-timer",
+  "authors": [
+    "Sirrah"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "flipclock": "^0.7.7"
+  }
+}
