@@ -6,7 +6,12 @@ name = "pypi"
 [dev-packages]
 
 [packages]
+
 flask = "*"
+"flask-login" = "*"
+"flask-script" = "*"
+"flask-wtf" = "*"
+
 
 [requires]
 python_version = "3.5"
