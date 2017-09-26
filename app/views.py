@@ -9,7 +9,7 @@ def load_user(id):
     return TempUser()
 
 class TempUser(UserMixin):
-    
+
     id = 1
 
     def get_id(self):
@@ -28,6 +28,6 @@ def login():
         if username:
             # TODO: Add username and password checks
             login_user(TempUser(), False)
-            return redirect(url_for('index'))
+            return redirect(request.args.get('next') or url_for('index'))
     flash("Try again")
     return render_template("login.html", form=form)
