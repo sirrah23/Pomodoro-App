@@ -1,19 +1,13 @@
 from flask import render_template, redirect, url_for, flash, request
 from flask_login import login_required, login_user, UserMixin, logout_user
 from app import app, login_manager
+from app.models import User
 
-from .forms import LoginForm
+from app.forms import LoginForm
 
 @login_manager.user_loader
-def load_user(id):
-    return TempUser()
-
-class TempUser(UserMixin):
-
-    id = 1
-
-    def get_id(self):
-        return self.id
+def load_user(userid):
+    return User.query.get(int(userid))
 
 @app.route('/')
 @login_required
@@ -24,12 +18,11 @@ def index():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        username = form.username.data
-        if username:
-            # TODO: Add username and password checks
-            login_user(TempUser(), False)
+        user = User.get_by_username(form.username.data)
+        print(user)
+        if user is not None and user.check_password(form.password.data):
+            login_user(user, False)
             return redirect(request.args.get('next') or url_for('index'))
-    flash("Try again")
     return render_template("login.html", form=form)
 
 @app.route("/logout")

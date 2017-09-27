@@ -11,6 +11,7 @@ flask = "*"
 "flask-login" = "*"
 "flask-script" = "*"
 "flask-wtf" = "*"
+"flask-sqlalchemy" = "*"
 
 
 [requires]
