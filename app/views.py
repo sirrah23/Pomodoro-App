@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request
 from flask_login import login_required, login_user, UserMixin, logout_user
 from app import app, login_manager
-from app.models import User
+from app.models import User, Pomodoro
 
 from app.forms import LoginForm
 
@@ -29,3 +29,12 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route("/pomodoro", methods=["POST"])
+def pomodoro():
+    request_json = request.get_json()
+    Pomodoro.create_new_pomodoro(
+        request_json['context'],
+        request_json['interruptions']
+    )
+    return "", 201

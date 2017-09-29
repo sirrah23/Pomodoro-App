@@ -7,11 +7,13 @@ name = "pypi"
 
 [packages]
 
-flask = "*"
-"flask-login" = "*"
-"flask-script" = "*"
-"flask-wtf" = "*"
-"flask-sqlalchemy" = "*"
+Flask = "*"
+"Flask-Login" = "*"
+"Flask-Script" = "*"
+"Flask-WTF" = "*"
+"Flask-SQLAlchemy" = "*"
+pylint = "*"
+"flake8" = "*"
 
 
 [requires]
