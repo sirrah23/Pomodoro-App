@@ -1,21 +1,19 @@
-var clock = new FlipClock($('.your-clock'), 1500, {
-  clockFace: "HourlyCounter",
-  countdown: true,
-  autoStart: false
-})
+const clock = cf($('.your-clock'));
+clock.generate_clock();
 
 $('.start-button').click(function(){
-    clock.start();
-    $('.context').prop('readonly', true);
+  clock.clock.start();
+  $('.context').prop('readonly', true);
 });
 
 $('.stop-button').click(function(){
-    clock.stop();
+  clock.clock.stop();
 });
 
 $('.reset-button').click(function(){
-    clock.stop(function(){
-      clock.setTime(1500);
-      $('.context').prop('readonly', false);
-    });
+  clock.clock.stop(function(){
+    clock.toggle_mode();
+    clock.reset();
+    $('.context').prop('readonly', false);
+  });
 });
