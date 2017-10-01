@@ -10,6 +10,15 @@ function toggle_mode_indicator(){
   }
 }
 
+clock.add_end_listener(() => {
+  setTimeout(() => {
+    toggle_mode_indicator();
+    clock.toggle_mode();
+    clock.reset();
+    clock.clock.start();
+  }, 2000);
+});
+
 $('.start-button').click(function(){
   clock.clock.start();
   $('.context').prop('readonly', true);

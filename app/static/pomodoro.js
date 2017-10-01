@@ -9,6 +9,7 @@ const cf = (function(){
   };
   const pomodoro_factory = function(elem){
     return {
+      end_listeners: [],
       mode: timer_modes.pomodoro,
       get_length: function(){
         if(this.mode == timer_modes.break){
@@ -31,12 +32,24 @@ const cf = (function(){
         if(this.clock){
           return;
         }
+        let that = this;
         this.clock = new FlipClock(elem, this.get_length(), {
           clockFace: "HourlyCounter",
           countdown: true,
-          autoStart: false
+          autoStart: false,
+          callbacks: {
+            stop: function(){
+              if(that.clock.getTime().time !== 0)
+                return;
+              for(let i = 0; i < that.end_listeners.length; i++)
+                that.end_listeners[i]();
+            }
+          }
         });
       },
+      add_end_listener: function(l){
+        this.end_listeners.push(l);
+      }
     };
   };
   return pomodoro_factory;
