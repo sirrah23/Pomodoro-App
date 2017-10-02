@@ -16,19 +16,17 @@
       </div>
     </nav>
     <div class="clock column is-half is-offset-one-quarter has-text-centered">
-      <div class="your-clock"></div>
+      <div id="clock"></div>
     </div>
     <div class="column is-5 is-offset-one-quarter has-text-centered">
-      <button class="start-button button is-dark">Start</button>
-      <button class="stop-button button is-dark">Stop</button>
-      <button class="reset-button button is-dark">Reset</button>
-      <button class="toggle-button button is-dark">Toggle</button>
+      <button id="start-button" class="button is-dark">Start</button>
+      <button id="stop-button" class="button is-dark">Stop</button>
+      <button id="reset-button" class="button is-dark">Reset</button>
+      <button id="toggle-button" class="button is-dark">Toggle</button>
     </div>
-    <div class="field">
-      <div class="control column is-5 is-offset-one-quarter">
-        <input class="input context" type="text" placeholder="Context...">
-      </div>
-    </div>
+    <input id="context" class="input column is-offset-one-quarter is-5" type="text" placeholder="Context...">
+    <br>
+    <input id="interruptions" class="input column is-offset-one-quarter is-5" type="text" value="0" placeholder="Interruptions...">
 
   <script src="{{url_for('static', filename='lib/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{url_for('static', filename='lib/flipclock/compiled/flipclock.min.js')}}"></script>
