@@ -23,7 +23,15 @@ function gather_and_send_pomdoro(){
   const context = $('#context').val();
   const interruptions = parseInt($('#interruptions').val(), 10);
   const payload = {context, interruptions};
-  $.post('/pomodoro', payload);
+  $.ajax({
+    type: 'POST',
+    url: '/pomodoro',
+    data: JSON.stringify(payload, null, '\t'),
+    contentType: 'application/json;charset=UTF-8',
+    success: function(result){
+      console.log(result);
+    }
+  });
 }
 
 function reset_interruption_counter(){

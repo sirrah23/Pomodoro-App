@@ -1,18 +1,21 @@
-from flask import render_template, redirect, url_for, flash, request
-from flask_login import login_required, login_user, UserMixin, logout_user
+from flask import render_template, redirect, url_for, request
+from flask_login import login_required, login_user, logout_user
 from app import app, login_manager
 from app.models import User, Pomodoro
 
 from app.forms import LoginForm
 
+
 @login_manager.user_loader
 def load_user(userid):
     return User.query.get(int(userid))
+
 
 @app.route('/')
 @login_required
 def index():
     return render_template('index.html')
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -25,10 +28,12 @@ def login():
             return redirect(request.args.get('next') or url_for('index'))
     return render_template("login.html", form=form)
 
+
 @app.route("/logout")
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 @app.route("/pomodoro", methods=["POST"])
 def pomodoro():

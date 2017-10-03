@@ -2,3 +2,4 @@ app/static/lib
 __pycache__/
 *.pyc
 TAGS
+app/*.db
