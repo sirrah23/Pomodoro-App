@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import timedelta
 
 from app import db
 from flask_login import UserMixin
@@ -47,5 +48,12 @@ class Pomodoro(db.Model):
         db.session.commit()
 
     @staticmethod
-    def pomodoros_past_n_days(n, user):
-        pass
+    def past_n_days(n, user_id):
+        now = datetime.utcnow()
+        n_days_ago = now - timedelta(days=n)  # TODO: floor to midnight
+        res = db.session.query(Pomodoro).filter(
+            Pomodoro.user_id == user_id,
+            Pomodoro.end_time > n_days_ago,
+            Pomodoro.end_time <= now
+        ).all()
+        return res
