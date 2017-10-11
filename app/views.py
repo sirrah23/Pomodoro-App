@@ -29,6 +29,12 @@ def login():
     return render_template("login.html", form=form)
 
 
+@app.route('/graph')
+@login_required
+def graph():
+    return render_template('graph.html')
+
+
 @app.route("/logout")
 def logout():
     logout_user()

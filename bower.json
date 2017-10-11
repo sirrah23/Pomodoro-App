@@ -9,6 +9,7 @@
   "homepage": "",
   "private": true,
   "dependencies": {
-    "flipclock": "^0.7.7"
+    "flipclock": "^0.7.7",
+    "chart.js": "^2.7.0"
   }
 }
