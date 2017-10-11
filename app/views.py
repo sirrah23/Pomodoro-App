@@ -1,5 +1,5 @@
-from flask import render_template, redirect, url_for, request
-from flask_login import login_required, login_user, logout_user
+from flask import render_template, redirect, url_for, request, g
+from flask_login import login_required, login_user, logout_user, current_user
 from app import app, login_manager
 from app.models import User, Pomodoro
 
@@ -9,6 +9,11 @@ from app.forms import LoginForm
 @login_manager.user_loader
 def load_user(userid):
     return User.query.get(int(userid))
+
+
+@app.before_request
+def before_request():
+    g.user = current_user
 
 
 @app.route('/')
@@ -42,10 +47,12 @@ def logout():
 
 
 @app.route("/pomodoro", methods=["POST"])
+@login_required
 def pomodoro():
     request_json = request.get_json()
     Pomodoro.create_new_pomodoro(
         request_json['context'],
-        request_json['interruptions']
+        request_json['interruptions'],
+        g.user.id
     )
     return "", 201
