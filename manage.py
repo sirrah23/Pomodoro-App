@@ -1,6 +1,6 @@
 from flask_script import Manager, Server, prompt_bool
-from app import app, db
-from app.models import User
+from project.app import app, db
+from project.app.models import User
 
 manager = Manager(app)
 manager.add_command("runserver", Server())

@@ -1,4 +1,4 @@
-app/static/lib
+**/static/lib
 __pycache__/
 *.pyc
 TAGS

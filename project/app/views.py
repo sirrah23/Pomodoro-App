@@ -1,22 +1,11 @@
 import json
-from datetime import datetime, timedelta
 
 from flask import render_template, redirect, url_for, request, g
 from flask_login import login_required, login_user, logout_user, current_user
-from app import app, login_manager
-from app.models import User, Pomodoro
 
-from app.forms import LoginForm
-
-
-# TODO: Utils
-def get_past_n_days(n):
-    days = []
-    now = datetime.now().date()
-    for i in range(n):
-        days.append(str(now - timedelta(days=i)))
-    days = days[::-1]
-    return days
+from project.app import app, login_manager
+from project.app.models import User, Pomodoro
+from project.app.forms import LoginForm
 
 
 @login_manager.user_loader
