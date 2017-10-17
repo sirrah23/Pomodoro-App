@@ -7,8 +7,8 @@
   <body>
     <nav class="navbar is-black">
       <div class="navbar-start">
-        <a class=navbar-item href="#">Home</a>
-        <a class=navbar-item href="#">Graphs</a>
+        <a class=navbar-item href="/">Home</a>
+        <a class=navbar-item href="/graph">Graphs</a>
         <a class=navbar-item href="/logout">Log Out</a>
       </div>
     </nav>
@@ -25,8 +25,8 @@
                 datasets: [
                     {% for item in dataset.data %}
                     {
-                        label: {{item.context}}
-                        data: {{item.counts}}
+                        label: "{{item.context}}",
+                        data: {{item.counts}},
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',

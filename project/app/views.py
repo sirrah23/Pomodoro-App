@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
+
 import json
 
 from flask import render_template, redirect, url_for, request, g
@@ -6,6 +10,8 @@ from flask_login import login_required, login_user, logout_user, current_user
 from project.app import app, login_manager
 from project.app.models import User, Pomodoro
 from project.app.forms import LoginForm
+
+from project.helpers.view_helper import build_graph_view
 
 
 @login_manager.user_loader
@@ -40,8 +46,8 @@ def login():
 @login_required
 def graph():
     day_limit = 6
-    past_days = get_past_n_days(day_limit)
-    dataset = {'dates': json.dumps(past_days)}
+    dataset = build_graph_view(day_limit, Pomodoro, g.user.id)
+    print(dataset)
     return render_template('graph.html', dataset=dataset)
 
 
