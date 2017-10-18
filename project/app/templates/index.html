@@ -27,9 +27,13 @@
     <input id="context" class="input column is-offset-one-quarter is-5" type="text" placeholder="Context...">
     <br>
     <input id="interruptions" class="input column is-offset-one-quarter is-5" type="text" value="0" placeholder="Interruptions...">
-
+    <div class="column is-5 is-offset-one-quarter has-text-centered">
+    <button id="plus-buttion" class="button is-dark" onclick="counter.inc()">+</button>
+    <button id="minus-button" class="button is-dark" onclick="counter.dec()">-</button>
+    </div>
   <script src="{{url_for('static', filename='lib/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{url_for('static', filename='lib/flipclock/compiled/flipclock.min.js')}}"></script>
+  <script src="{{url_for('static', filename='counter.js')}}"></script>
   <script src="{{url_for('static', filename='pomodoro.js')}}"></script>
   <script src="{{url_for('static', filename='index.js')}}"></script>
   </body>
