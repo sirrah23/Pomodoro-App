@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 def list_past_n_days(n, start_ts=datetime.utcnow()):
     days = []
     start_date = start_ts.date()
-    for i in range(n):
+    for i in range(n+1):
         # days.insert(0, days.append(str(start_date - timedelta(days=i))))
         days.append(str(start_date - timedelta(days=i)))
     days = days[::-1]
