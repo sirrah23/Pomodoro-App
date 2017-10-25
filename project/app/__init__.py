@@ -2,12 +2,12 @@ import os
 from flask import Flask, render_template
 from flask_login import LoginManager, login_required
 from flask_sqlalchemy import SQLAlchemy
+from project.app.config import BaseConfig
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "mysecretkey"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'pomodoro.db')
+app.config.from_object(BaseConfig)
 db = SQLAlchemy(app)
 
 
