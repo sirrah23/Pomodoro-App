@@ -5,11 +5,11 @@ from project.app.models import User
 manager = Manager(app)
 manager.add_command("runserver", Server())
 
+
 @manager.command
 def initdb():
     db.create_all()
-    db.session.add(User(username="admin", password="admin"))
-    db.session.commit()
+
 
 @manager.command
 def dropdb():
@@ -17,12 +17,15 @@ def dropdb():
         db.drop_all()
         print("Dropped the database")
 
+
 @manager.command
 def adduser():
     username = prompt("Username?")
     password = prompt_pass("Password?")
     db.session.add(User(username=username, password=password))
+    db.session.commit()
     print("Created the new user: " + username)
+
 
 if __name__ == "__main__":
     manager.run()
