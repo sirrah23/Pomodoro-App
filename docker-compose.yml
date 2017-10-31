@@ -4,7 +4,7 @@ services:
     build: .
     ports:
       - "5000:5000"
-    command: python manage.py runserver --host 0.0.0.0
+    command: gunicorn -b 0.0.0.0:5000 --workers=5 wsgi:app
     volumes:
       - .:/app
     links:

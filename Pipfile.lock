@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c05281a657d784c8963a50b9bec486de9d7a2ea573dbaca34a79070cda2f6a43"
+            "sha256": "81c337c3f5df50d1cfea646a5a9184097870eb940027db4547a1fadccfe2b535"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -41,7 +41,7 @@
                 "sha256:4ba998e881f285c1d1b73f5b6e3766539b4e162320f9589334400c5ddc35198c",
                 "sha256:31f235852f88edc1558d428d890663c49eb4514ffec9f3650e7f3c9e4a12e36f"
             ],
-            "markers": "python_version < '3.3'",
+            "markers": "python_version == '2.7'",
             "version": "==1.4"
         },
         "click": {
@@ -55,7 +55,7 @@
             "hashes": [
                 "sha256:5308b47021bc2340965c371f0f058cc6971a04502638d4244225c49d80db273a"
             ],
-            "markers": "python_version < '3.2'",
+            "markers": "python_version == '2.7'",
             "version": "==3.5.0"
         },
         "enum34": {
@@ -108,6 +108,13 @@
                 "sha256:5d14d55cfd35f613d99ee7cba0fc3fbbe63ba02f544d349158c14ca15561cc36"
             ],
             "version": "==0.14.2"
+        },
+        "gunicorn": {
+            "hashes": [
+                "sha256:75af03c99389535f218cc596c7de74df4763803f7b63eb09d77e92b3956b36c6",
+                "sha256:eee1169f0ca667be05db3351a0960765620dad53f53434262ff8901b68a1b622"
+            ],
+            "version": "==19.7.1"
         },
         "isort": {
             "hashes": [
