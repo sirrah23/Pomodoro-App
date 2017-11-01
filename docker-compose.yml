@@ -2,9 +2,7 @@ version: '2'
 services:
   web:
     build: .
-    ports:
-      - "5000:5000"
-    command: gunicorn -b 0.0.0.0:5000 --workers=5 wsgi:app
+    command: gunicorn -b 0.0.0.0:5000 --workers=2 wsgi:app
     volumes:
       - .:/app
     links:
