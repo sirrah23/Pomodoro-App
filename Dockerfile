@@ -5,7 +5,6 @@ WORKDIR /app
 
 ADD . /app
 
-RUN pip install pipenv
-RUN pipenv install --system
+RUN pip install -r requirements.txt
 
 EXPOSE 5000
