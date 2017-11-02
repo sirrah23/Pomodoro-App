@@ -2,6 +2,10 @@
 
 This repository contains the code for a Pomodoro web application.
 
+This application allows you to run a pomodoro timer for custom contexts e.g. work, home.
+
+Everytime you complete a pomodoro it gets stored in the database and you will be able to view your pomodoro history for the past few days as a bar graph.
+
 # Launching the application
 
 ## Prerequisites
