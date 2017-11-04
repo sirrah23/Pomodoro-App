@@ -42,7 +42,7 @@ const cf = (function(){
               if(that.clock.getTime().time !== 0)
                 return;
               for(let i = 0; i < that.end_listeners.length; i++)
-                that.end_listeners[i]();
+                that.end_listeners[i]({mode: that.mode, length: that.get_length()});
             }
           }
         });

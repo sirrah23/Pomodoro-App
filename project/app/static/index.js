@@ -10,7 +10,7 @@ function toggle_mode_indicator(){
   }
 }
 
-function clock_hit_zero_update_ui(){
+function clock_hit_zero_update_ui(e){
   setTimeout(() => {
     toggle_mode_indicator();
     clock.toggle_mode();
@@ -19,7 +19,8 @@ function clock_hit_zero_update_ui(){
   }, 2000);
 }
 
-function gather_and_send_pomdoro(){
+function gather_and_send_pomdoro(e){
+  if(e.mode === 'break') return; //Don't track breaks in the database
   const context = $('#context').val();
   const interruptions = parseInt($('#interruptions').val(), 10);
   const payload = {context, interruptions};
@@ -34,7 +35,7 @@ function gather_and_send_pomdoro(){
   });
 }
 
-function reset_interruption_counter(){
+function reset_interruption_counter(e){
   $('#interruptions').val("0");
 }
 
