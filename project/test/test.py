@@ -9,9 +9,6 @@ from utils import FakePomodoro
 from project.helpers.view_helper import build_graph_view
 
 
-# TODO: Test day ranges with no data in it
-# TODO: Test data plus empty data range
-
 class TestViewDataGeneration(unittest.TestCase):
 
     def test_one_context_multiple_days(self):
@@ -74,6 +71,19 @@ class TestViewDataGeneration(unittest.TestCase):
             else:
                 self.assertEqual(d['context'], 'Home')
                 self.assertEqual(d['counts'], [2, 0, 1])
+
+    def test_one_context_missing_days(self):
+        fp = FakePomodoro([
+            (1500, datetime(2017, 5, 3), "Home", 0, 1),
+            (1500, datetime(2017, 5, 4), "Home", 0, 1),
+            (1500, datetime(2017, 5, 5), "Home", 0, 1),
+            (1500, datetime(2017, 5, 6), "Home", 0, 1),
+        ])
+        dataset = build_graph_view(3, fp, 1, start=datetime(2017, 5, 7))
+        self.assertEqual(dataset['dates'], ['2017-05-05', '2017-05-06', '2017-05-07'])
+        self.assertEqual(len(dataset['data']), 1)
+        self.assertEqual(dataset['data'][0]['context'], 'Home')
+        self.assertEqual(dataset['data'][0]['counts'], [1, 1, 0])
 
 
 if __name__ == '__main__':

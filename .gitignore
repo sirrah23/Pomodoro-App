@@ -4,3 +4,4 @@ __pycache__/
 TAGS
 app/*.db
 .venv
+*.log

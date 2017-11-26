@@ -45,9 +45,11 @@ def login():
 @app.route('/graph')
 @login_required
 def graph():
+    app.logger.info("START: Graph build")
     day_limit = 6
-    dataset = build_graph_view(day_limit, Pomodoro, g.user.id)
-    print(dataset)
+    dataset = build_graph_view(day_limit, Pomodoro, g.user.id, logger=app.logger)
+    app.logger.info(dataset)
+    app.logger.info("END: Graph build")
     return render_template('graph.html', dataset=dataset)
 
 
